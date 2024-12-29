@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Introduction</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        /* Prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;  /* Prevent horizontal scrolling */
+            width: 100%;
+        }
+
+        /* All previous styles remain exactly the same */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #2c3e50; /* Dark background */
+            color: #ecf0f1; /* Light text color */
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for the logo below the heading */
+        .header-logo {
+            width: 150px; /* Increased size of the logo */
+            height: auto;
+            margin-top: 20px; /* Space between the heading and logo */
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 30px;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 30px;
+            margin: 30px auto;
+            background: #34495e; /* Dark section background */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 1000px;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        ol, ul {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+
+        ol li, ul li {
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .tool-card {
+            background: #34495e;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .tool-card h3 {
+            color: #ecf0f1;
+            margin: 10px 0 5px;
+        }
+
+        .tool-card p {
+            color: #b2bec3;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #2c3e50;
+            color: #ffffff;
+            margin-top: 50px;
+        }
+
+        .image-section {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            section {
+                padding: 20px;
+                margin: 20px 10px;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .tool-logo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to DevOps Learning</h1>
+        <!-- Logo placed below the heading -->
+        <img src="logo.png" alt="DevOps Logo" class="header-logo">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#introduction">
+                        <img src="intro.png" alt="Introduction Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 10px;">
+                        Introduction
+                    </a>
+                </li>
+                <li>
+                    <a href="#learning-map">
+                        <img src="learning.png" alt="Learning Map Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 10px;">
+                        Learning Map
+                    </a>
+                </li>
+                <li>
+                    <a href="#tools">
+                        <img src="tools.png" alt="Tools Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 10px;">
+                        Required Tools
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="introduction">
+            <h2>What is DevOps?</h2>
+            <p>DevOps is a combination of Development (Dev) and Operations (Ops) practices, tools, and a cultural philosophy that aims to bridge
+                 the gap between software development and IT operations. It emphasizes collaboration, automation, continuous integration/continuous
+                deployment (CI/CD), and continuous improvement to deliver high-quality software efficiently and reliably.</p>
+        </section>
+
+        <section id="keyprinciples">
+            <h2>Key Principles of DevOps</h2>
+            <ol>
+                <li><strong>Collaboration</strong> : Foster teamwork between development, operations, and other stakeholders</li>
+                <li><strong>Automation</strong> : Automate repetitive tasks such as testing, deployment, and infrastructure management</li>
+                <li><strong>Continuous Integration and Delivery (CI/CD)</strong> : Ensure frequent and reliable code integration and deployment</li>
+                <li><strong>Monitoring and Feedback</strong> : Implement tools and processes to monitor system performance and gather user feedback</li>
+                <li><strong>Infrastructure as Code (IaC)</strong> : Use code to manage and provision infrastructure, making it reproducible and consistent.</li>
+            </ol>
+        </section>
+
+        <section id="benefits">
+            <h2>Benefits of Devops</h2>
+            <ol>
+                <li><strong>Faster Delivery of Software</strong>
+                    <ul>
+                        <li>Continuous Integration and Delivery (CI/CD) automates build, test, and deployment processes.</li>
+                        <li>Reduces time to market for new features and bug fixes.</li>
+                        <li>Shortens development cycles by improving team collaboration.</li>
+                    </ul>
+                </li>
+                <li><strong>Improved Collaboration and Communication</strong>
+                    <ul>
+                        <li>Encourages teamwork between development, operations, and stakeholders.</li>
+                        <li>Promotes shared responsibility for common goals.</li>
+                        <li>Enables quick feedback loops for adjustments and improvements.</li>
+                    </ul>
+                </li>
+                <li><strong>Enhanced Quality and Reliability</strong>
+                    <ul>
+                        <li>Automated testing ensures code quality with fewer production bugs.</li>
+                        <li>Monitoring and logging proactively identify and resolve issues.</li>
+                        <li>Standardized processes ensure consistency and reduce human errors.</li>
+                    </ul>
+                </li>
+                <li><strong>Greater Efficiency</strong>
+                    <ul>
+                        <li>Automation replaces repetitive manual tasks with scripts and tools.</li>
+                        <li>Infrastructure as Code (IaC) streamlines infrastructure management.</li>
+                        <li>Enables efficient scaling of infrastructure and applications.</li>
+                    </ul>
+                </li>
+                <li><strong>Cost Optimization</strong>
+                    <ul>
+                        <li>Reduced downtime minimizes service interruptions.</li>
+                        <li>Automation and IaC optimize resource allocation.</li>
+                        <li>Early bug detection lowers the cost of fixing production issues.</li>
+                    </ul>
+                </li>
+                <li><strong>Increased Security</strong>
+                    <ul>
+                        <li>DevSecOps integrates security into every stage of the pipeline.</li>
+                        <li>Automated compliance enforces security policies and audits.</li>
+                        <li>Faster patch management quickly addresses vulnerabilities.</li>
+                    </ul>
+                </li>
+                <li><strong>Enhanced Customer Satisfaction</strong>
+                    <ul>
+                        <li>Rapid updates deliver new features and fixes based on feedback.</li>
+                        <li>High availability ensures reliable services.</li>
+                        <li>User-centric development aligns priorities with customer needs.</li>
+                    </ul>
+                </li>
+                <li><strong>Continuous Improvement</strong>
+                    <ul>
+                        <li>Data-driven decisions guide improvements and optimizations.</li>
+                        <li>Encourages innovation through faster experimentation cycles.</li>
+                        <li>Fosters a culture of learning and adaptability.</li>
+                    </ul>
+                </li>
+                <li><strong>Competitive Advantage</strong>
+                    <ul>
+                        <li>Adaptability helps respond quickly to market changes and demands.</li>
+                        <li>Frees up time for teams to focus on creative problem-solving.</li>
+                        <li>Faster delivery and better quality enhance market leadership.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="lifecycle">
+            <h2>DevOps Life Cycle</h2>
+            <ol>
+                <li><strong>Plan:</strong> Defining the project's goals, timelines, and requirements.</li>
+                <li><strong>Develop:</strong> Writing and coding the application.</li>
+                <li><strong>Build:</strong> Compiling the code and preparing it for deployment.</li>
+                <li><strong>Test:</strong> Ensuring the code is functioning as expected and free from errors.</li>
+                <li><strong>Release:</strong> Deploying the code to the production environment.</li>
+                <li><strong>Deploy:</strong> Rolling out updates and monitoring their impact.</li>
+                <li><strong>Operate:</strong> Running and managing the application in production.</li>
+                <li><strong>Monitor:</strong> Continuous observation of the system's performance and health.</li>
+            </ol>
+
+            <img src="lifecycle.png" alt="DevOps Lifecycle Diagram" width="800" class="image-section">
+        </section>
+
+        <section id="learning-map">
+            <h2>Stepwise Learning Map</h2>
+            <ol>
+                <li>
+                    <strong>Understand DevOps Fundamentals</strong>
+                    <ul>
+                        <li>Learn the Basics:
+                            <ul>
+                                <li>What is DevOps?</li>
+                                <li>DevOps principles: Collaboration, automation, continuous improvement.</li>
+                            </ul>
+                        </li>
+                        <li>Key Concepts:
+                            <ul>
+                                <li>CI/CD</li>
+                                <li>Infrastructure as Code (IaC)</li>
+                                <li>Monitoring</li>
+                                <li>Version Control</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Version Control Systems (VCS)</strong>
+                    <ul>
+                        <li>Tools: Git, GitHub/GitLab/Bitbucket</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Setting up repositories</li>
+                                <li>Branching and merging</li>
+                                <li>Managing pull requests and conflicts</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Build Automation</strong>
+                    <ul>
+                        <li>Tools: Maven, Gradle, Ant</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Automating code builds</li>
+                                <li>Managing dependencies</li>
+                                <li>Writing build scripts</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Continuous Integration (CI)</strong>
+                    <ul>
+                        <li>Tools: Jenkins, GitHub Actions, Travis CI, CircleCI</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Setting up CI pipelines</li>
+                                <li>Running automated tests during CI</li>
+                                <li>Integrating code analysis tools (e.g., SonarQube)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Configuration Management and Infrastructure Automation</strong>
+                    <ul>
+                        <li>Tools: Ansible, Puppet, Chef</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Automating server setup</li>
+                                <li>Writing and managing playbooks (Ansible) or manifests (Puppet)</li>
+                                <li>Configuring services and applications</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Containerization</strong>
+                    <ul>
+                        <li>Tools: Docker, Podman</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Creating and managing containerized applications</li>
+                                <li>Writing Dockerfiles</li>
+                                <li>Working with container registries</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Orchestration</strong>
+                    <ul>
+                        <li>Tools: Kubernetes, Docker Swarm</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Deploying and managing containerized applications</li>
+                                <li>Creating Kubernetes manifests (YAML)</li>
+                                <li>Understanding pods, services, deployments, and scaling</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Continuous Deployment (CD)</strong>
+                    <ul>
+                        <li>Tools: Jenkins, GitLab CI/CD, ArgoCD, Spinnaker</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Automating deployment pipelines</li>
+                                <li>Managing rollback strategies</li>
+                                <li>Blue-Green and Canary deployments</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Cloud Infrastructure</strong>
+                    <ul>
+                        <li>Platforms: AWS, Azure, GCP</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Setting up cloud environments</li>
+                                <li>Using cloud services (e.g., EC2, S3, RDS)</li>
+                                <li>Managing IAM roles and permissions</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Infrastructure as Code (IaC)</strong>
+                    <ul>
+                        <li>Tools: Terraform, AWS CloudFormation</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Writing infrastructure templates</li>
+                                <li>Managing infrastructure lifecycle using IaC</li>
+                                <li>Versioning infrastructure</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Monitoring and Logging</strong>
+                    <ul>
+                        <li>Tools: Prometheus, Grafana, ELK Stack, Datadog</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Setting up monitoring dashboards</li>
+                                <li>Configuring alerting systems</li>
+                                <li>Centralized logging and log analysis</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Security in DevOps</strong>
+                    <ul>
+                        <li>Concepts: DevSecOps, Shift-Left Security</li>
+                        <li>Tools: SonarQube, OWASP ZAP, Snyk</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Integrating security checks in CI/CD pipelines</li>
+                                <li>Static and dynamic application security testing</li>
+                                <li>Vulnerability scanning</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Advanced Topics</strong>
+                    <ul>
+                        <li>Tools:
+                            <ul>
+                                <li>Chaos Engineering: Gremlin, Chaos Monkey</li>
+                                <li>Service Mesh: Istio, Linkerd</li>
+                            </ul>
+                        </li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Building fault-tolerant systems</li>
+                                <li>Managing microservices with service meshes</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Collaboration and Project Management</strong>
+                    <ul>
+                        <li>Tools: Jira, Trello, Slack</li>
+                        <li>Skills to Acquire:
+                            <ul>
+                                <li>Managing tasks and sprints</li>
+                                <li>Communicating effectively in teams</li>
+                                <li>Tracking project progress</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="tools">
+            <h2>Required Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="git.png" alt="Git Logo" width="200" height="100" class="tool-logo">
+                    <h3>Git</h3>
+                    <p>Version Control System</p>
+                </div>
+                <div class="tool-card">
+                    <img src="jenkins.png" alt="Jenkins Logo" class="tool-logo">
+                    <h3>Jenkins</h3>
+                    <p>CI/CD Automation</p>
+                </div>
+                <div class="tool-card">
+                    <img src="docker.png" alt="Docker Logo" class="tool-logo">
+                    <h3>Docker</h3>
+                    <p>Containerization</p>
+                </div>
+                <div class="tool-card">
+                    <img src="kubernetes.png" alt="Kubernetes Logo" class="tool-logo">
+                    <h3>Kubernetes</h3>
+                    <p>Container Orchestration</p>
+                </div>
+                <div class="tool-card">
+                    <img src="terraform.png" alt="Terraform Logo" class="tool-logo">
+                    <h3>Terraform</h3>
+                    <p>Infrastructure as Code</p>
+                </div>
+                <div class="tool-card">
+                    <img src="ansible.png" alt="Ansible Logo" class="tool-logo">
+                    <h3>Ansible</h3>
+                    <p>Configuration Management</p>
+                </div>
+                <div class="tool-card">
+                    <img src="prometheus.png" alt="Prometheus Logo" class="tool-logo">
+                    <h3>Prometheus</h3>
+                    <p>Monitoring</p>
+                </div>
+                <div class="tool-card">
+                    <img src="grafana.png" alt="Grafana Logo" class="tool-logo">
+                    <h3>Grafana</h3>
+                    <p>Visualization</p>
+                </div>
+                <div class="tool-card">
+                    <img src="travis.png" alt="Travis CI Logo" class="tool-logo">
+                    <h3>Travis</h3>
+                    <p>Integration</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DevOps Learning. All rights reserved.</p>
+    </footer>
+</body>
+</html>
